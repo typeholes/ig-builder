@@ -12,6 +12,8 @@ const newName = ref('');
 const newExpr = ref('');
 const error = ref('');
 
+const IsDev = (process.env.DEV as unknown as boolean) && process.env.MODE === 'electron';
+
 function addVar() {
   try {
     error.value = '';
@@ -81,7 +83,7 @@ export const gameItems = {
 </script>
 
 <template>
-  <div>
+  <div v-if="IsDev">
     <q-input v-model="filePath" />
     <q-input v-model="newName" />
     <q-input v-model="newExpr" />
